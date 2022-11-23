@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image,ImageTk
+import subprocess
 parent = Tk()
 
   
@@ -29,18 +30,18 @@ frame1.pack(pady = 80 )
 # parent.wm_attributes("-transparentcolor", 'grey')
 
 newbutton = Button(frame1,height = 3, 
-          width = 15, text = "New User", fg = "green")
+          width = 15, text = "New User", fg = "green",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\getdataSQL.py']))
 newbutton.pack(side = TOP)
 
 trainbutton = Button(frame1,height = 3, 
-          width = 15, text = "Training Data", fg = "blue")
+          width = 15, text = "Training Data", fg = "blue",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\TrainData.py']))
 trainbutton.pack(side = TOP)
 
 detectbutton = Button(frame1,height = 3, 
-          width = 15, text = "Detect Face", fg = "green")
+          width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\RecongintionData.py']))
 detectbutton.pack(side = TOP)
 
 checkbutton = Button(frame1,height = 3, 
-          width = 15, text = "Check Camera", fg = "black")
+          width = 15, text = "Check Camera", fg = "black",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\getDataWC.py']))
 checkbutton.pack(side = TOP)
 parent.mainloop()
