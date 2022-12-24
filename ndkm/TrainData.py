@@ -16,7 +16,7 @@ def getImageWithId(path):
         FaceNp = np.array(FaceImg,'uint8')
         print(FaceNp)
 
-        Id = int(imagePath.split('/')[1].split('.')[1])#window thì split('\\')
+        Id = int(imagePath.split('\\')[1].split('.')[1])#window thì split('\\')
 
         faces.append(FaceNp)
         IDs.append(Id)
