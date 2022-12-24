@@ -35,7 +35,7 @@ detectbutton = Button(frame1,height = 3,
           width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/RecongintionData.py']))
 detectbutton.pack(side = TOP)
 
-checkbutton = Button(frame1,height = 3, 
-          width = 15, text = "Check Camera", fg = "black",command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/getDataWC.py']))
-checkbutton.pack(side = TOP)
+# checkbutton = Button(frame1,height = 3, 
+#           width = 15, text = "Check Camera", fg = "black",command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/getDataWC.py']))
+# checkbutton.pack(side = TOP)
 parent.mainloop()

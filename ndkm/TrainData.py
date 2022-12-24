@@ -8,16 +8,13 @@ path = 'dataSet'
 def getImageWithId(path):
     imagePaths = [os.path.join(path,f)for f in os.listdir(path)]
     print(imagePaths)
-
     faces = []
     IDs = []
     for imagePath in imagePaths:
         FaceImg = Image.open(imagePath).convert('L')
         FaceNp = np.array(FaceImg,'uint8')
         print(FaceNp)
-
         Id = int(imagePath.split('\\')[1].split('.')[1])#window thì split('\\')
-
         faces.append(FaceNp)
         IDs.append(Id)
         cv2.imshow('trainning',FaceNp)
@@ -29,6 +26,8 @@ recognizer.train(faces, np.array(IDs))
 if not os.path.exists('recognizer'):
     os.makedirs('recognizer')
 recognizer.save('recognizer/trainingData.yml')
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
 cv2.destroyAllWindows()
     
 

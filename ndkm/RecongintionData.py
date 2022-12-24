@@ -7,13 +7,12 @@ from pathlib import Path
 
 def get_project_root() -> Path:
     return Path(__file__).parent.parent
-  
 pathroot = str(get_project_root())
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-
 recognizer.read(pathroot+'/ndkm/recognizer/trainingData.yml')
+
 def getProfile(id):
     conn = sqlite3.connect(pathroot+'/ndkm/data.db')
     query = 'SELECT * FROM people WHERE ID = ' + str(id)
@@ -23,6 +22,7 @@ def getProfile(id):
         profile = row
     conn.close()
     return profile
+
 cap = cv2.VideoCapture(0)
 fontface = cv2.FONT_HERSHEY_SIMPLEX
 while(True):
@@ -34,20 +34,13 @@ while(True):
         roi_gray = gray[y:y+h,x:x+w]
         id,confidence = recognizer.predict(roi_gray)
         if confidence<40:
-            
             profile = getProfile(id)
             if(profile !=None):
-                
                 cv2.putText(frame,""+str(profile[1]),(x+10,y+h+30), fontface,1,(0,0,255),2)
         else:
-            
-            cv2.putText(frame,"Hong biet",(x+10,y+h+30), fontface,1,(0,0,255),2)
+            cv2.putText(frame,"Unknown",(x+10,y+h+30), fontface,1,(0,0,255),2)
     cv2.imshow('image',frame)
-    if(cv2.waitKey(1)== ord('q')):
-        
-        break;
-
-
-    
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
 cap.release()
 cv2.destroyAllWindows()
