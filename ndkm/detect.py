@@ -1,16 +1,17 @@
 from tkinter import *
 from PIL import Image,ImageTk
 import subprocess
+from pathlib import Path
+
 parent = Tk()
 
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent
   
 parent.geometry("400x400")
-  
+pathroot = str(get_project_root())
 # Add image file
-# bg = PhotoImage(file = "D:\\ndkm\\pyauto\\ndkm\\bg-image.jpg")
-
-
-bg = Image.open("D:\\ndkm\\pyauto\\ndkm\\bg-image.jpg")
+bg = Image.open(pathroot+"/ndkm/bg-image.jpg")
 bg = bg.resize((400, 400))
 bg = ImageTk.PhotoImage(bg)
 
@@ -30,18 +31,18 @@ frame1.pack(pady = 80 )
 # parent.wm_attributes("-transparentcolor", 'grey')
 
 newbutton = Button(frame1,height = 3, 
-          width = 15, text = "New User", fg = "green",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\getdataSQL.py']))
+          width = 15, text = "New User", fg = "green",command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/getdataSQL.py']))
 newbutton.pack(side = TOP)
 
 trainbutton = Button(frame1,height = 3, 
-          width = 15, text = "Training Data", fg = "blue",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\TrainData.py']))
+          width = 15, text = "Training Data", fg = "blue",command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/TrainData.py']))
 trainbutton.pack(side = TOP)
 
 detectbutton = Button(frame1,height = 3, 
-          width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\RecongintionData.py']))
+          width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/RecongintionData.py']))
 detectbutton.pack(side = TOP)
 
 checkbutton = Button(frame1,height = 3, 
-          width = 15, text = "Check Camera", fg = "black",command=lambda:subprocess.Popen(args=['python', r'D:\\ndkm\\pyauto\\ndkm\\getDataWC.py']))
+          width = 15, text = "Check Camera", fg = "black",command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/getDataWC.py']))
 checkbutton.pack(side = TOP)
 parent.mainloop()

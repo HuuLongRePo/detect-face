@@ -3,13 +3,19 @@ import numpy as np
 import os
 import sqlite3
 from PIL import Image
+from pathlib import Path
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent
+  
+pathroot = str(get_project_root())
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
-recognizer.read('D:/ndkm/pyauto/ndkm/recognizer/trainingData.yml')
+recognizer.read(pathroot+'/ndkm/recognizer/trainingData.yml')
 def getProfile(id):
-    conn = sqlite3.connect("D:/ndkm/pyauto/ndkm/data.db")
+    conn = sqlite3.connect(pathroot+'/ndkm/data.db')
     query = 'SELECT * FROM people WHERE ID = ' + str(id)
     cursor = conn.execute(query)
     profile = None

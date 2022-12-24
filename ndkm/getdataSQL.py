@@ -2,8 +2,15 @@ import cv2
 import numpy as np
 import sqlite3
 import os
+from pathlib import Path
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent
+  
+pathroot = str(get_project_root())
+
 def insertOrUpdate(id, name):
-    conn = sqlite3.connect('D:/ndkm/pyauto/ndkm/data.db')
+    conn = sqlite3.connect(pathroot+'/ndkm/data.db')
 
     query = "SELECT * FROM people WHERE ID =" + str(id)
     cusror = conn.execute(query)
