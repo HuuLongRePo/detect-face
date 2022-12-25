@@ -24,15 +24,15 @@ frame1.pack(pady = 80 )
 # parent.wm_attributes("-transparentcolor", 'grey')
 
 newbutton = Button(frame1,height = 3, 
-          width = 15, text = "New User", fg = "green",command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/getdataSQL.py']))
+          width = 15, text = "New User", fg = "green",command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/getdataSQL.py']))
 newbutton.pack(side = TOP)
 
 trainbutton = Button(frame1,height = 3, 
-          width = 15, text = "Training Data", fg = "blue",command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/TrainData.py']))
+          width = 15, text = "Training Data", fg = "blue",command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/TrainData.py']))
 trainbutton.pack(side = TOP)
 
 detectbutton = Button(frame1,height = 3, 
-          width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python', r''+pathroot+'/ndkm/RecongintionData.py']))
+          width = 15, text = "Detect Face", fg = "green", command=lambda:subprocess.Popen(args=['python3', r''+pathroot+'/ndkm/RecongintionData.py']))
 detectbutton.pack(side = TOP)
 
 # checkbutton = Button(frame1,height = 3, 
