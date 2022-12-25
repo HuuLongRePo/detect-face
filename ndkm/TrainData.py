@@ -34,8 +34,6 @@ if not os.path.exists('recognizer'):
     os.makedirs('recognizer')
 recognizer.save('recognizer/trainingData.yml')
 #lưu vào file
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
 cv2.destroyAllWindows()
     
 
